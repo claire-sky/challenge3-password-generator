@@ -125,6 +125,7 @@ var generateCharacters = function() {
       password += special.charAt(Math.floor(Math.random() * special.length));
     };
   };
+  password = password.split('').sort(function(){return 0.5-Math.random()}).join('');
   console.log(password);
 };
     
