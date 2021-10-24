@@ -42,50 +42,26 @@ var characterCriteria = function() {
       
     // Create lowercase check
     lowercaseCharacter = window.confirm("Do you want to include lowercase characters?")
-      if (lowercaseCharacter) {
-        console.log(lowercaseCharacter);
-      };
 
     // Create uppercase check
     uppercaseCharacter = window.confirm("Do you want to include uppercase characters?")
-      if (uppercaseCharacter) {
-        console.log(uppercaseCharacter);
-      };
-
+      
     // Create numeric check
     numericCharacter = window.confirm("Do you want to include numbers?")
-      if (numericCharacter) {
-        console.log(numericCharacter);
-      };
 
     // Create special characters check
     specialCharacter = window.confirm("Do you want to include special characters?")
-      if (specialCharacter) {
-        console.log(specialCharacter);
-      };
 
     // Validate character type (minimum of 1)
     passwordCharacter = [lowercaseCharacter, uppercaseCharacter, numericCharacter, specialCharacter].filter(Boolean);
-    console.log(passwordCharacter);
 
     characterTypes = passwordCharacter.filter(Boolean).length;
     if (characterTypes < 1) {
       characterCriteria();
     };
 
-    console.log("characterTypes", characterTypes);
-    console.log("passwordCharacter", passwordCharacter);
-
     characterCount = Math.floor(passwordLength / characterTypes);
-    console.log("characterCount", characterCount);
     remainderCount = passwordLength - (characterCount * characterTypes) + characterCount;
-    console.log("remainderCount", remainderCount);
-
-    console.log("total", specialCharacter + numericCharacter + uppercaseCharacter + lowercaseCharacter);
-
-    if (lowercaseCharacter && characterTypes == 1) {
-      console.log("both true");
-    };
 };
 
 // Generate amount of each character type
@@ -128,10 +104,7 @@ var generateCharacters = function() {
   password = password.split('').sort(function(){return 0.5-Math.random()}).join('');
   console.log(password);
 };
-    
-
-
-
+   
 // Click the button to generate a password
 var generatePassword = function() {
   lengthCriteria();
@@ -139,19 +112,16 @@ var generatePassword = function() {
   generateCharacters();
 };
 
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+// Write password to the #password input
+function writePassword() {
+  generatePassword();
+  var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
+  passwordText.value = password;
+};
 
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-generatePassword();
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
