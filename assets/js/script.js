@@ -1,5 +1,4 @@
-// Assignment code here
-
+// Universal variables
 var passwordLength = 0;
 var passwordCharacter = 0;
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -20,7 +19,10 @@ var lengthCriteria = function() {
   // Choose length of the password (8 - 128 characters)
   passwordLength = parseInt(window.prompt("Enter character length of password. Must be between 8-128 characters."));
   // Validate length
-    if (passwordLength > 128) {
+    if (!Number.isInteger(passwordLength) || passwordLength == NaN) {
+      window.alert("Please enter a number between 8-128.");
+      lengthCriteria();
+    } else if (passwordLength > 128) {
       window.alert("Must be less than 129 characters.");
       lengthCriteria();
     } else if (passwordLength < 8) {
@@ -28,11 +30,9 @@ var lengthCriteria = function() {
       lengthCriteria();
     } else {
       var lengthConfirm = window.confirm("You entered " + passwordLength + " characters. Is that correct?");
-        if (lengthConfirm) {
-          console.log(passwordLength);
-        } else {
+        if (lengthConfirm = false) {
           lengthCriteria();
-        }
+        };
     };
 };
 
@@ -102,7 +102,6 @@ var generateCharacters = function() {
     };
   };
   password = password.split('').sort(function(){return 0.5-Math.random()}).join('');
-  console.log(password);
 };
    
 // Click the button to generate a password
