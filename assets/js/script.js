@@ -96,6 +96,7 @@ var generateCharacters = function() {
       };
     };
   };
+  // Logic for amount of special characters
   if (specialCharacter) {
     for (i = 0; i < characterCount; i++) {
       password += special.charAt(Math.floor(Math.random() * special.length));
